@@ -16,7 +16,7 @@ default: &default
   username: root
   password:
   socket: /tmp/mysql.sock
-
+ 
 development:
   <<: *default
   database: protospace_42529_development
