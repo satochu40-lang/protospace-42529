@@ -40,11 +40,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.timestamps null: false
     end
 
-    add_index :user, :name.                  unique: true
+    add_index :users, :name,                 unique: true
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
-    add_index :user, :profile,               unique: true
-    add_index :user, :position.                unique: true     
+    add_index :users, :profile,               unique: true
+    add_index :users, :position,               unique: true     
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
