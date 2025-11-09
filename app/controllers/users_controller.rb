@@ -11,6 +11,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @prototypes = @user.prototypes.order("created_at DESC")
   end
-  
+ end 
   # 必要に応じて、ユーザーに紐づくプロトタイプも取得
     
