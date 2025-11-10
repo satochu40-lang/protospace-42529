@@ -3,6 +3,7 @@ class PrototypesController < ApplicationController
     # 🌟 ログイン状態を確認する 🌟
     # new, create, edit, update, destroyアクションのみ、ログインを必須とする
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :move_to_index, except: [:index, :show]
 
   def index
     @prototypes = Prototype.all.order(created_at: :desc)
@@ -66,6 +67,11 @@ class PrototypesController < ApplicationController
     # 3. トップページへのリダイレクト
     redirect_to root_path
   end
+
+    def move_to_index
+      unless user_signed_in?
+      redirect_to action: :index
+    end
   
   private
   

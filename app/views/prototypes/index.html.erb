@@ -1,12 +1,12 @@
 <main class="main">
   <div class="inner">
     <%# ログインしているときは以下を表示する %>
-       <% if user_signed_in? %> 
+      <% if user_signed_in? && current_user.id == @prototype.user_id %>
        <div class="greeting">
        こんにちは、        
        <%# ここに greeting の内容が入ります %>
        <%= link_to "  #{current_user.name}さん",user_path(current_user), class: :greeting_link %> 
-
+  
     </div> 
     <% end %>          
     <%# // ログインしているときは上記を表示する %>
