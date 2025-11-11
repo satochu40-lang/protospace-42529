@@ -5,13 +5,13 @@ class CommentsController < ApplicationController
    def create
     # params[:prototype_id] はルーティングでネストされたURLから取得
      @prototype = Prototype.find(params[:prototype_id])
-     @comment = @prototype.comments.new(comment_params) 
+     @comment = comments.new(comment_params) 
 
     if @comment.save
      redirect_to prototype_path(@prototype)
      else
-      @prototype = @comment.prototype
-      @comments = @prototype.comments
+     #@prototype = @comment.prototype
+      @comments = @prototype.comments.includes(:user)
        render 'prototypes/show', status: :unprocessable_entity
       # views/prototype/show.html.erbのファイルを参照しています。    
     
