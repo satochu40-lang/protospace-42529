@@ -38,6 +38,9 @@ class PrototypesController < ApplicationController
   # 1. 編集ページを表示するアクション
   def edit
     @prototype = Prototype.find(params[:id])
+    unless @prototype.user == current_user
+      redirect_to root_path
+    end
   end
 
   # 2. データを更新するアクション
