@@ -1,20 +1,22 @@
 class CommentsController < ApplicationController
+
+  before_action :authenticate_user!, only: [:create, :destroy]
    # コメントの新規作成（投稿）のデータを受け付けるアクション
-  def create
+   def create
     # params[:prototype_id] はルーティングでネストされたURLから取得
      @prototype = Prototype.find(params[:prototype_id])
      @comment = @prototype.comments.new(comment_params) 
 
     if @comment.save
      redirect_to prototype_path(@prototype)
-    else
+     else
       @prototype = @comment.prototype
       @comments = @prototype.comments
        render 'prototypes/show', status: :unprocessable_entity
       # views/prototype/show.html.erbのファイルを参照しています。    
-    end
-   end 
-
+    
+    end 
+  end
   private
   
   def comment_params
