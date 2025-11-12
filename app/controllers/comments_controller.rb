@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     else
       @prototype = @comment.prototype
       @comments = @prototype.comments
-       render 'prototypes/show', status: :unprocessable_entity
+      render 'prototypes/show', status: :unprocessable_content
       # views/prototype/show.html.erbのファイルを参照しています。    
     end
    end 
